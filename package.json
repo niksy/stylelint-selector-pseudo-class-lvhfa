@@ -1,0 +1,38 @@
+{
+  "name": "stylelint-selector-pseudo-class-lvhfa",
+  "version": "0.0.0",
+  "description": "Stylelint rule for LVHFA order in link selectors.",
+  "main": "index.js",
+  "author": "Ivan Nikolić <niksy5@gmail.com> (http://ivannikolic.com/)",
+  "license": "MIT",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "eslint {index,test/**/*}.js && node test/index.js"
+  },
+  "dependencies": {
+    "lodash": "^4.13.1",
+    "stylelint": "^6.7.1"
+  },
+  "devDependencies": {
+    "eslint": "^2.13.1",
+    "eslint-config-niksy": "^2.1.0",
+    "stylelint-test-rule-tape": "^0.2.0"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "keywords": [
+    "lvhfa",
+    "stylelint-plugin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niksy/stylelint-selector-pseudo-class-lvhfa.git"
+  },
+  "bugs": {
+    "url": "https://github.com/niksy/stylelint-selector-pseudo-class-lvhfa/issues"
+  },
+  "homepage": "https://github.com/niksy/stylelint-selector-pseudo-class-lvhfa#readme"
+}
