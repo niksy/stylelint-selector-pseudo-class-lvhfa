@@ -1,8 +1,10 @@
-var test = require('stylelint-test-rule-tape');
-var fn = require('../');
+import test from 'stylelint-test-rule-tape';
+import fn from '../index';
 
-test(fn.rule, {
-	ruleName: fn.ruleName,
+const { rule, ruleName, messages } = fn;
+
+test(rule, {
+	ruleName: ruleName,
 	config: true,
 	skipBasicChecks: true,
 
@@ -26,25 +28,25 @@ test(fn.rule, {
 	reject: [
 		{
 			code: 'a:visited, a:link, a:hover, a:focus, a:active {}',
-			message: fn.messages.expected
+			message: messages.expected
 		},
 		{
 			code: 'a:visited, a:foo, a:link, b:bar, a:hover, c:baz, a:focus, a:active {}',
-			message: fn.messages.expected
+			message: messages.expected
 		},
 		{
 			code: 'a:link::before, a:hover, a:visited:before, a:focus::after, a:active:after {}',
-			message: fn.messages.expected
+			message: messages.expected
 		},
 		{
 			code: 'a:link, a:link, a:hover, a:hover, a:focus, a:visited, a:active {}',
-			message: fn.messages.expected
+			message: messages.expected
 		}
 	]
 });
 
-test(fn.rule, {
-	ruleName: fn.ruleName,
+test(rule, {
+	ruleName: ruleName,
 	config: true,
 	skipBasicChecks: true,
 	syntax: 'scss',
@@ -72,23 +74,23 @@ test(fn.rule, {
 	reject: [
 		{
 			code: 'a { &:visited, &:link, &:hover, &:focus, &:active {} }',
-			message: fn.messages.expected
+			message: messages.expected
 		},
 		{
 			code: 'a { &:visited, &:foo, &:link, b:bar, &:hover, c:baz, &:focus, &:active {} }',
-			message: fn.messages.expected
+			message: messages.expected
 		},
 		{
 			code: 'a { &:link::before, &:hover, &:visited:before, &:focus::after, &:active:after {} }',
-			message: fn.messages.expected
+			message: messages.expected
 		},
 		{
 			code: 'a { &:link, &:link, &:hover, &:hover, &:focus, &:visited, &:active {} }',
-			message: fn.messages.expected
+			message: messages.expected
 		},
 		{
 			code: 'a { &:visited, &:link, &:hover, &:focus, &:active { b { &:link, &:visited, &:hover, &:focus, &:active {} } } }',
-			message: fn.messages.expected
+			message: messages.expected
 		}
 	]
 });

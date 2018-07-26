@@ -1,14 +1,14 @@
-var stylelint = require('stylelint');
-var _ = require('lodash');
-var parseSelector = require('stylelint/dist/utils/parseSelector').default;
+import stylelint from 'stylelint';
+import _ from 'lodash';
+import parseSelector from 'stylelint/dist/utils/parseSelector';
 
-var ruleName = 'plugin/selector-pseudo-class-lvhfa';
+const ruleName = 'plugin/selector-pseudo-class-lvhfa';
 
-var messages = stylelint.utils.ruleMessages(ruleName, {
+const messages = stylelint.utils.ruleMessages(ruleName, {
 	expected: 'Expected pseudo class selectors to follow LVHFA order.'
 });
 
-var correctOrder = [
+const correctOrder = [
 	':link',
 	':visited',
 	':hover',
@@ -16,11 +16,11 @@ var correctOrder = [
 	':active'
 ];
 
-module.exports = stylelint.createPlugin(ruleName, function ( bool ) {
+const plugin = stylelint.createPlugin(ruleName, ( bool ) => {
 
-	return function ( cssRoot, result ) {
+	return ( cssRoot, result ) => {
 
-		var validOptions = stylelint.utils.validateOptions(result, ruleName, {
+		const validOptions = stylelint.utils.validateOptions(result, ruleName, {
 			actual: bool
 		});
 
@@ -28,22 +28,20 @@ module.exports = stylelint.createPlugin(ruleName, function ( bool ) {
 			return;
 		}
 
-		cssRoot.walkRules(function ( rule ) {
-			parseSelector(rule.selector, result, rule, function ( selector ) {
+		cssRoot.walkRules(( rule ) => {
+			parseSelector(rule.selector, result, rule, ( selector ) => {
 
-				var inputOrder = [];
-				var finalOrder = [];
-				var finalResult;
+				let inputOrder = [];
 
-				selector.walkPseudos(function ( pseudo ) {
+				selector.walkPseudos(( pseudo ) => {
 					if ( correctOrder.indexOf(pseudo.value) !== -1 ) {
 						inputOrder.push(pseudo.value);
 					}
 				});
 
 				inputOrder = _.uniq(inputOrder);
-				finalOrder = _.without.apply(_, [correctOrder].concat(_.difference(correctOrder, inputOrder)));
-				finalResult = _.every(finalOrder, function ( pseudo, index ) {
+				const finalOrder = _.without.apply(_, [correctOrder].concat(_.difference(correctOrder, inputOrder)));
+				const finalResult = _.every(finalOrder, ( pseudo, index ) => {
 					return pseudo === inputOrder[index];
 				});
 
@@ -62,6 +60,6 @@ module.exports = stylelint.createPlugin(ruleName, function ( bool ) {
 	};
 
 });
+plugin.messages = messages;
 
-module.exports.ruleName = ruleName;
-module.exports.messages = messages;
+export default plugin;

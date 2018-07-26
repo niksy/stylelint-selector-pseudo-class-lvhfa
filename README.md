@@ -91,4 +91,4 @@ a:active {}
 MIT © [Ivan Nikolić](http://ivannikolic.com)
 
 [ci]: https://travis-ci.org/niksy/stylelint-selector-pseudo-class-lvhfa
-[ci-img]: https://img.shields.io/travis/niksy/stylelint-selector-pseudo-class-lvhfa.svg
+[ci-img]: https://travis-ci.org/niksy/stylelint-selector-pseudo-class-lvhfa.svg?branch=master
