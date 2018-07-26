@@ -41,9 +41,7 @@ const plugin = stylelint.createPlugin(ruleName, ( bool ) => {
 
 				inputOrder = _.uniq(inputOrder);
 				const finalOrder = _.without.apply(_, [correctOrder].concat(_.difference(correctOrder, inputOrder)));
-				const finalResult = _.every(finalOrder, ( pseudo, index ) => {
-					return pseudo === inputOrder[index];
-				});
+				const finalResult = _.every(finalOrder, ( pseudo, index ) => pseudo === inputOrder[index]);
 
 				if ( !finalResult ) {
 					stylelint.utils.report({
