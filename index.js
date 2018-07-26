@@ -1,6 +1,6 @@
 import stylelint from 'stylelint';
 import _ from 'lodash';
-import parseSelector from 'stylelint/dist/utils/parseSelector';
+import parseSelector from 'stylelint/lib/utils/parseSelector';
 
 const ruleName = 'plugin/selector-pseudo-class-lvhfa';
 
