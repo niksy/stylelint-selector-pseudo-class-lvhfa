@@ -27,6 +27,8 @@ Add this config to your `.stylelintrc`:
 
 ## Details
 
+<!-- prettier-ignore-start -->
+
 ```css
     a:link,
     a:visited,
@@ -37,16 +39,22 @@ Add this config to your `.stylelintrc`:
  * This type of pseudo-class selector */
 ```
 
-When specifying link pseudo-classes, always do so in this order: **L**ink, **V**isited, **H**over, **F**ocus, **A**ctive. Any other order won’t work consistently. This rule is probably not valid anymore, but it helps to keep these selectors in consistent order.
+<!-- prettier-ignore-end -->
 
-For more information, read [Eric Meyer’s explanation](http://meyerweb.com/eric/thoughts/2007/06/11/who-ordered-the-link-states/).
+When specifying link pseudo-classes, always do so in this order: **L**ink,
+**V**isited, **H**over, **F**ocus, **A**ctive. Any other order won’t work
+consistently. This rule is probably not valid anymore, but it helps to keep
+these selectors in consistent order.
+
+For more information, read
+[Eric Meyer’s explanation](http://meyerweb.com/eric/thoughts/2007/06/11/who-ordered-the-link-states/).
 
 To help you remember this order, there are a couple of mnemonics for that:
 
-* LoVe, HAte
-* Lord Vader Hates Furry Animals
-* Lord Vader's Handle Formerly Anakin
-* Lord Voldemort Has Foul Ambitions
+-   LoVe, HAte
+-   Lord Vader Hates Furry Animals
+-   Lord Vader's Handle Formerly Anakin
+-   Lord Voldemort Has Foul Ambitions
 
 ### Options
 
@@ -54,6 +62,8 @@ To help you remember this order, there are a couple of mnemonics for that:
 
 The following patterns are considered warnings:
 
+<!-- prettier-ignore-start -->
+
 ```css
 a:visited,
 a:link,
@@ -68,7 +78,11 @@ a:link,
 a:active {}
 ```
 
-The following patterns are *not* considered warnings:
+<!-- prettier-ignore-end -->
+
+The following patterns are _not_ considered warnings:
+
+<!-- prettier-ignore-start -->
 
 ```css
 a:link,
@@ -83,6 +97,8 @@ a:link,
 a:visited,
 a:active {}
 ```
+
+<!-- prettier-ignore-end -->
 
 ---
 
@@ -90,5 +106,9 @@ a:active {}
 
 MIT © [Ivan Nikolić](http://ivannikolic.com)
 
-[ci]: https://travis-ci.org/niksy/stylelint-selector-pseudo-class-lvhfa
-[ci-img]: https://travis-ci.org/niksy/stylelint-selector-pseudo-class-lvhfa.svg?branch=master
+<!-- prettier-ignore-start -->
+
+[ci]: https://github.com/niksy/stylelint-selector-pseudo-class-lvhfa/actions?query=workflow%3ACI
+[ci-img]: https://github.com/niksy/stylelint-selector-pseudo-class-lvhfa/workflows/CI/badge.svg?branch=master
+
+<!-- prettier-ignore-end -->

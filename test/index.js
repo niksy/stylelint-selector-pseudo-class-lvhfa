@@ -1,96 +1,159 @@
-import test from 'stylelint-test-rule-tape';
-import fn from '../index';
+import function_ from '../index.js';
+import { runCodeTest } from './util/index.js';
 
-const { rule, ruleName, messages } = fn;
+const { rule, ruleName, messages } = function_;
 
-test(rule, {
+runCodeTest({
 	ruleName: ruleName,
 	config: true,
-	skipBasicChecks: true,
 
 	accept: [
 		{
-			code: 'a:link, a:visited, a:hover, a:focus, a:active {}'
+			input: 'a:link, a:visited, a:hover, a:focus, a:active {}',
+			result: []
 		},
 		{
-			code: 'a:link, a:foo, a:visited, b:bar, a:hover, c:baz, a:focus, a:active {}'
+			input: 'a:link, a:foo, a:visited, b:bar, a:hover, c:baz, a:focus, a:active {}',
+			result: []
 		},
 		{
-			code: 'a:link::before, a:visited:before, a:hover, a:focus::after, a:active:after {}'
+			input: 'a:link::before, a:visited:before, a:hover, a:focus::after, a:active:after {}',
+			result: []
 		},
 		{
-			code: 'a:link, a:link, a:visited, a:hover, a:hover, a:focus, a:active {}'
+			input: 'a:link, a:link, a:visited, a:hover, a:hover, a:focus, a:active {}',
+			result: []
 		},
 		{
-			code: 'a:foo, a:bar, b:baz, b:bad {}'
+			input: 'a:foo, a:bar, b:baz, b:bad {}',
+			result: []
 		}
 	],
 	reject: [
 		{
-			code: 'a:visited, a:link, a:hover, a:focus, a:active {}',
-			message: messages.expected
+			input: 'a:visited, a:link, a:hover, a:focus, a:active {}',
+			result: [
+				{
+					column: 1,
+					line: 1,
+					text: messages.expected
+				}
+			]
 		},
 		{
-			code: 'a:visited, a:foo, a:link, b:bar, a:hover, c:baz, a:focus, a:active {}',
-			message: messages.expected
+			input: 'a:visited, a:foo, a:link, b:bar, a:hover, c:baz, a:focus, a:active {}',
+			result: [
+				{
+					column: 1,
+					line: 1,
+					text: messages.expected
+				}
+			]
 		},
 		{
-			code: 'a:link::before, a:hover, a:visited:before, a:focus::after, a:active:after {}',
-			message: messages.expected
+			input: 'a:link::before, a:hover, a:visited:before, a:focus::after, a:active:after {}',
+			result: [
+				{
+					column: 1,
+					line: 1,
+					text: messages.expected
+				}
+			]
 		},
 		{
-			code: 'a:link, a:link, a:hover, a:hover, a:focus, a:visited, a:active {}',
-			message: messages.expected
+			input: 'a:link, a:link, a:hover, a:hover, a:focus, a:visited, a:active {}',
+			result: [
+				{
+					column: 1,
+					line: 1,
+					text: messages.expected
+				}
+			]
 		}
 	]
 });
 
-test(rule, {
+runCodeTest({
 	ruleName: ruleName,
 	config: true,
-	skipBasicChecks: true,
-	syntax: 'scss',
+	customSyntax: 'postcss-scss',
 
 	accept: [
 		{
-			code: 'a { &:link, &:visited, &:hover, &:focus, &:active {} }'
+			input: 'a { &:link, &:visited, &:hover, &:focus, &:active {} }',
+			result: []
 		},
 		{
-			code: 'a { &:link, &:foo, &:visited, b:bar, &:hover, c:baz, &:focus, &:active {} }'
+			input: 'a { &:link, &:foo, &:visited, b:bar, &:hover, c:baz, &:focus, &:active {} }',
+			result: []
 		},
 		{
-			code: 'a { &:link::before, &:visited:before, &:hover, &:focus::after, &:active:after {} }'
+			input: 'a { &:link::before, &:visited:before, &:hover, &:focus::after, &:active:after {} }',
+			result: []
 		},
 		{
-			code: 'a { &:link, &:link, &:visited, &:hover, &:hover, &:focus, &:active {} }'
+			input: 'a { &:link, &:link, &:visited, &:hover, &:hover, &:focus, &:active {} }',
+			result: []
 		},
 		{
-			code: 'a { &:link, &:visited, &:hover, &:focus, &:active { b { &:link, &:visited, &:hover, &:focus, &:active {} } } }'
+			input: 'a { &:link, &:visited, &:hover, &:focus, &:active { b { &:link, &:visited, &:hover, &:focus, &:active {} } } }',
+			result: []
 		},
 		{
-			code: 'a { &:foo, &:bar {} } b { &:baz, &:bad {} }'
+			input: 'a { &:foo, &:bar {} } b { &:baz, &:bad {} }',
+			result: []
 		}
 	],
 	reject: [
 		{
-			code: 'a { &:visited, &:link, &:hover, &:focus, &:active {} }',
-			message: messages.expected
+			input: 'a { &:visited, &:link, &:hover, &:focus, &:active {} }',
+			result: [
+				{
+					column: 5,
+					line: 1,
+					text: messages.expected
+				}
+			]
 		},
 		{
-			code: 'a { &:visited, &:foo, &:link, b:bar, &:hover, c:baz, &:focus, &:active {} }',
-			message: messages.expected
+			input: 'a { &:visited, &:foo, &:link, b:bar, &:hover, c:baz, &:focus, &:active {} }',
+			result: [
+				{
+					column: 5,
+					line: 1,
+					text: messages.expected
+				}
+			]
 		},
 		{
-			code: 'a { &:link::before, &:hover, &:visited:before, &:focus::after, &:active:after {} }',
-			message: messages.expected
+			input: 'a { &:link::before, &:hover, &:visited:before, &:focus::after, &:active:after {} }',
+			result: [
+				{
+					column: 5,
+					line: 1,
+					text: messages.expected
+				}
+			]
 		},
 		{
-			code: 'a { &:link, &:link, &:hover, &:hover, &:focus, &:visited, &:active {} }',
-			message: messages.expected
+			input: 'a { &:link, &:link, &:hover, &:hover, &:focus, &:visited, &:active {} }',
+			result: [
+				{
+					column: 5,
+					line: 1,
+					text: messages.expected
+				}
+			]
 		},
 		{
-			code: 'a { &:visited, &:link, &:hover, &:focus, &:active { b { &:link, &:visited, &:hover, &:focus, &:active {} } } }',
-			message: messages.expected
+			input: 'a { &:visited, &:link, &:hover, &:focus, &:active { b { &:link, &:visited, &:hover, &:focus, &:active {} } } }',
+			result: [
+				{
+					column: 5,
+					line: 1,
+					text: messages.expected
+				}
+			]
 		}
 	]
 });
