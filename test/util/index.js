@@ -10,18 +10,18 @@ import { lint } from 'stylelint';
 
 /**
  * @typedef {object} Test
- * @property {string} input
- * @property {CustomSyntax} [syntax]
- * @property {object[]} result
+ * @property {string}       input
+ * @property {CustomSyntax} [customSyntax]
+ * @property {object[]}     result
  */
 
 /**
  * @typedef {object} TestOptions
- * @property {string} ruleName
- * @property {object} config
- * @property {Test[]} accept
- * @property {Test[]} reject
- * @property {CustomSyntax} [customSyntax]
+ * @property {string}         ruleName
+ * @property {object|boolean} config
+ * @property {Test[]}         accept
+ * @property {Test[]}         reject
+ * @property {CustomSyntax}   [customSyntax]
  */
 
 /**

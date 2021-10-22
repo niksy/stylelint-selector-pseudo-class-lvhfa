@@ -1,7 +1,7 @@
 import stylelint from 'stylelint';
 import without from 'lodash.without';
 import difference from 'lodash.difference';
-import parseSelector from 'stylelint/lib/utils/parseSelector';
+import selectorParser from 'postcss-selector-parser';
 
 const ruleName = 'plugin/selector-pseudo-class-lvhfa';
 
@@ -22,7 +22,8 @@ const plugin = stylelint.createPlugin(ruleName, (bool) => {
 		}
 
 		cssRoot.walkRules((rule) => {
-			parseSelector(rule.selector, result, rule, (selector) => {
+			selectorParser((selector) => {
+				/** @type {string[]} */
 				let inputOrder = [];
 
 				selector.walkPseudos((pseudo) => {
@@ -48,7 +49,7 @@ const plugin = stylelint.createPlugin(ruleName, (bool) => {
 						message: messages.expected
 					});
 				}
-			});
+			}).processSync(rule.selector);
 		});
 	};
 });
