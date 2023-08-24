@@ -36,6 +36,8 @@ runCodeTest({
 				{
 					column: 1,
 					line: 1,
+					endColumn: 49,
+					endLine: 1,
 					text: messages.expected
 				}
 			]
@@ -46,6 +48,8 @@ runCodeTest({
 				{
 					column: 1,
 					line: 1,
+					endColumn: 70,
+					endLine: 1,
 					text: messages.expected
 				}
 			]
@@ -56,6 +60,8 @@ runCodeTest({
 				{
 					column: 1,
 					line: 1,
+					endColumn: 77,
+					endLine: 1,
 					text: messages.expected
 				}
 			]
@@ -66,6 +72,8 @@ runCodeTest({
 				{
 					column: 1,
 					line: 1,
+					endColumn: 66,
+					endLine: 1,
 					text: messages.expected
 				}
 			]
@@ -111,6 +119,8 @@ runCodeTest({
 				{
 					column: 5,
 					line: 1,
+					endColumn: 53,
+					endLine: 1,
 					text: messages.expected
 				}
 			]
@@ -121,6 +131,8 @@ runCodeTest({
 				{
 					column: 5,
 					line: 1,
+					endColumn: 74,
+					endLine: 1,
 					text: messages.expected
 				}
 			]
@@ -131,6 +143,8 @@ runCodeTest({
 				{
 					column: 5,
 					line: 1,
+					endColumn: 81,
+					endLine: 1,
 					text: messages.expected
 				}
 			]
@@ -141,6 +155,8 @@ runCodeTest({
 				{
 					column: 5,
 					line: 1,
+					endColumn: 70,
+					endLine: 1,
 					text: messages.expected
 				}
 			]
@@ -151,6 +167,8 @@ runCodeTest({
 				{
 					column: 5,
 					line: 1,
+					endColumn: 109,
+					endLine: 1,
 					text: messages.expected
 				}
 			]
