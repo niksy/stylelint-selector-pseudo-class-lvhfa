@@ -11,7 +11,10 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
 
 const correctOrder = [':link', ':visited', ':hover', ':focus', ':active'];
 
-const plugin = stylelint.createPlugin(ruleName, (bool) => {
+/**
+ * @type {stylelint.RuleBase}
+ */
+function ruleFunction(/** @type boolean */ bool) {
 	return (cssRoot, result) => {
 		const validOptions = stylelint.utils.validateOptions(result, ruleName, {
 			actual: bool
@@ -52,7 +55,10 @@ const plugin = stylelint.createPlugin(ruleName, (bool) => {
 			}).processSync(rule.selector);
 		});
 	};
-});
+}
+
+// @ts-ignore
+const plugin = stylelint.createPlugin(ruleName, ruleFunction);
 
 export default {
 	...plugin,
